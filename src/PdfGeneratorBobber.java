@@ -30,24 +30,24 @@ public class PdfGeneratorBobber {
 
         String generalInfo = "Общая информация";
 
-        String exerciseTime = "Время затрачено";
-        String exerciseTimeMax = "Время задано";
-        String shotsOnTargetNumber = "Попаданий";
-        String shotsOnTargetNumberExpect = "Попаданий ожидаемо";
+        String exerciseTime = "Время выполнения";
+        String exerciseTimeMax = "Время, задание";
+        String shotsOnTargetNumber = "Попаданий в цель";
+        String shotsOnTargetNumberExpect = "Попаданий, ожидание";
         String distanceToTarget = "Расстояние до цели, м";
-        String distanceToTargetCorrectionFactor = "Коррекция расстояния";
+        String distanceToTargetCorrectionFactor = "Расстояние, корректировка";
         String boatSpeed = "Скорость корабля, узлы";
-        String boatSpeedCorrectionFactor = "Коррекция скорости";
-        String difficultyWeightFactor = "Сложность";
+        String boatSpeedCorrectionFactor = "Скорость, корректировка";
+        String difficultyWeightFactor = "Сложность упражнения";
         String technicalIssues = "Число отказов";
-        String course = "Курс";
-        String courseCorrectionfactor = "Коррекция курса";
+        String course = "Курс судна";
+        String courseCorrectionfactor = "Курс, корректировка";
 
         String externalFactors = "Внешние факторы";
 
-        String airTemperature = "Температура";
-        String seaState = "Волнение моря";
-        String windSpeed = "Скорость ветра";
+        String airTemperature = "Температура, °C";
+        String seaState = "Волнение моря, баллы";
+        String windSpeed = "Скорость ветра, м/с";
         String windDirection = "Направление ветра";
 
         Format d_Format = new SimpleDateFormat("dd/MM/yyyy");
@@ -78,28 +78,28 @@ public class PdfGeneratorBobber {
                 boldFont, 18, Color.BLACK);
         pictureManager.addPictureRightAligned(appLogo, pageHeight - 81, (float) 0.1);
 
-        textManager.addSingleLineTextCentered(paperTitle, (int) (pageHeight - 111), regularFont, 22, Color.BLACK);
+        textManager.addSingleLineTextCentered(paperTitle, (int) (pageHeight - 121), regularFont, 22, Color.BLACK);
 
-        textManager.addSingleLineTextLeftCentered(exerciseTitle, (int) (pageHeight - 141), regularFont, 12,
+        textManager.addSingleLineTextLeftCentered(exerciseTitle, (int) (pageHeight - 151), regularFont, 12,
                 Color.BLACK);
-        textManager.addSingleLineTextRightCentered("", (int) (pageHeight - 141), regularFont, 12, Color.BLACK);
-        textManager.addSingleLineTextLeftCentered(exerciseDate, (int) (pageHeight - 156), regularFont, 12,
+        textManager.addSingleLineTextRightCentered("", (int) (pageHeight - 151), regularFont, 12, Color.BLACK);
+        textManager.addSingleLineTextLeftCentered(exerciseDate, (int) (pageHeight - 166), regularFont, 12,
                 Color.BLACK);
-        textManager.addSingleLineTextRightCentered("", (int) (pageHeight - 156), regularFont, 12, Color.BLACK);
-        textManager.addSingleLineTextLeftCentered(participantName, (int) (pageHeight - 171), regularFont, 12,
+        textManager.addSingleLineTextRightCentered("", (int) (pageHeight - 166), regularFont, 12, Color.BLACK);
+        textManager.addSingleLineTextLeftCentered(participantName, (int) (pageHeight - 181), regularFont, 12,
                 Color.BLACK);
-        textManager.addSingleLineTextRightCentered("", (int) (pageHeight - 171), regularFont, 12,
+        textManager.addSingleLineTextRightCentered("", (int) (pageHeight - 181), regularFont, 12,
                 Color.BLACK);
-        textManager.addSingleLineTextLeftCentered(participantScore, (int) (pageHeight - 186),
+        textManager.addSingleLineTextLeftCentered(participantScore, (int) (pageHeight - 196),
                 regularFont, 12, Color.BLACK);
-        textManager.addSingleLineTextRightCentered("", (int) (pageHeight - 186), regularFont, 12,
+        textManager.addSingleLineTextRightCentered("", (int) (pageHeight - 196), regularFont, 12,
                 Color.BLACK);
 
         textManager.addSingleLineTextLeftAligned(generalInfo, (int) (pageHeight -
-                211), italicFont, 14, Color.BLACK);
+                221), italicFont, 14, Color.BLACK);
 
-        int[] cellWidthTab1 = { 172, 90, 172, 90 };
-        tableManager.setTable(cellWidthTab1, 20, 35, (int) (pageHeight - 241));
+        int[] cellWidthTab1 = { 162, 100, 162, 100 };
+        tableManager.setTable(cellWidthTab1, 20, 35, (int) (pageHeight - 251));
         tableManager.setTableFont(regularFont, 10, Color.BLACK);
 
         tableManager.addCell(exerciseTime, Color.LIGHT_GRAY);
@@ -127,45 +127,28 @@ public class PdfGeneratorBobber {
         tableManager.addCell(difficultyWeightFactor, Color.LIGHT_GRAY);
         tableManager.addCell("", Color.WHITE);
 
-        // int[] cellWidthTab1_2 = { 280, 245 };
-        // tableManager.setTable(cellWidthTab1_2, 20, 35, (int) (pageHeight - 281));
-        // tableManager.setTableFont(regularFont, 10, Color.BLACK);
+        textManager.addSingleLineTextLeftAligned(externalFactors, (int) (pageHeight -
+                381), italicFont, 14, Color.BLACK);
 
-        // tableManager.addCell(shotsOnTargetNumber, Color.LIGHT_GRAY);
-        // tableManager.addCell(difficultyWeightFactor, Color.LIGHT_GRAY);
-        // tableManager.addCell("", Color.WHITE);
-        // tableManager.addCell("", Color.WHITE);
+        int[] cellWidthTab2 = { 162, 100, 162, 100 };
+        tableManager.setTable(cellWidthTab2, 20, 35, (int) (pageHeight - 411));
+        tableManager.setTableFont(regularFont, 10, Color.BLACK);
 
-        // textManager.addSingleLineTextLeftAligned(externalFactors, (int) (pageHeight -
-        // 331), italicFont, 14,
-        // Color.BLACK);
+        tableManager.addCell(airTemperature, Color.LIGHT_GRAY);
+        tableManager.addCell("", Color.WHITE);
+        tableManager.addCell(seaState, Color.LIGHT_GRAY);
+        tableManager.addCell("", Color.WHITE);
+        tableManager.addCell(windSpeed, Color.LIGHT_GRAY);
+        tableManager.addCell("", Color.WHITE);
+        tableManager.addCell(windDirection, Color.LIGHT_GRAY);
+        tableManager.addCell("", Color.WHITE);
 
-        // int[] cellWidthTab2 = { 175, 175, 175 };
-        // tableManager.setTable(cellWidthTab2, 20, 35, (int) (pageHeight - 371));
-        // tableManager.setTableFont(regularFont, 10, Color.BLACK);
-
-        // tableManager.addCell(airTemperature, Color.LIGHT_GRAY);
-        // tableManager.addCell(seaState, Color.LIGHT_GRAY);
-        // tableManager.addCell(windSpeed, Color.LIGHT_GRAY);
-
-        // tableManager.addCell("", Color.WHITE);
-        // tableManager.addCell("", Color.WHITE);
-        // tableManager.addCell("", Color.WHITE);
-
-        // tableManager.addCell(windDirection, Color.LIGHT_GRAY);
-        // tableManager.addCell(boatSpeed, Color.LIGHT_GRAY);
-        // tableManager.addCell("", Color.WHITE);
-
-        // tableManager.addCell("", Color.WHITE);
-        // tableManager.addCell("", Color.WHITE);
-        // tableManager.addCell("", Color.WHITE);
-
-        pictureManager.addPictureCentered(targetImage, pageHeight - 781, (float) 0.4);
+        pictureManager.addPictureCentered(targetImage, pageHeight - 781, (float) 0.5);
 
         pictureManager.addPictureCentered(devLogo, pageHeight - 821, (float) 0.04);
 
         contentStream.close();
-        document.save("F:\\myPDF.pdf");
+        document.save("/Users/michael/Downloads/bobber_res.pdf");
         document.close();
         System.out.println("PDF done");
     }
