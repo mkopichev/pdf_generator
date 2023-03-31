@@ -39,6 +39,21 @@ public class PdfElementManager {
             addSingleLineText(text, xPosCentered, yPos, font, fontSize, color);
         }
 
+        void addSingleLineTextLeftCentered(String text, int yPos, PDFont font, float fontSize, Color color)
+                throws IOException {
+
+            int xPosLeftCentered = (int) ((document.getPage(0).getTrimBox().getWidth() / 2)
+                    - TextManager.getTextWidth(text, font, fontSize));
+            addSingleLineText(text, xPosLeftCentered, yPos, font, fontSize, color);
+        }
+
+        void addSingleLineTextRightCentered(String text, int yPos, PDFont font, float fontSize, Color color)
+                throws IOException {
+
+            int xPosRightCentered = (int) (document.getPage(0).getTrimBox().getWidth() / 2);
+            addSingleLineText(text, xPosRightCentered, yPos, font, fontSize, color);
+        }
+
         void addSingleLineTextLeftAligned(String text, int yPos, PDFont font, float fontSize, Color color)
                 throws IOException {
 
@@ -105,7 +120,7 @@ public class PdfElementManager {
 
         void addCell(String text, Color fillColor) throws IOException {
 
-            contentStream.setStrokingColor(1f);
+            contentStream.setStrokingColor(0f);
             if (fillColor != null)
                 contentStream.setNonStrokingColor(fillColor);
 
@@ -116,9 +131,12 @@ public class PdfElementManager {
                 contentStream.fillAndStroke();
 
             contentStream.beginText();
+            contentStream.setFont(font, fontSize);
             contentStream.setNonStrokingColor(fontColor);
 
-            contentStream.newLineAtOffset(xPos + 10, yPos + 8);
+            contentStream.newLineAtOffset(
+                    xPos + ((colWidth[colPos] - TextManager.getTextWidth(text, font, fontSize)) / 2),
+                    yPos + (fontSize / 2) + 2);
 
             contentStream.showText(text);
             contentStream.endText();
