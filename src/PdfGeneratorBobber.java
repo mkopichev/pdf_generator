@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 
@@ -83,23 +84,23 @@ public class PdfGeneratorBobber {
         textManager.addSingleLineTextLeftCentered(exerciseTitle, (int) (pageHeight - 151), regularFont, 12,
                 Color.BLACK);
         textManager.addSingleLineTextRightCentered("", (int) (pageHeight - 151), regularFont, 12, Color.BLACK);
-        textManager.addSingleLineTextLeftCentered(exerciseDate, (int) (pageHeight - 166), regularFont, 12,
+        textManager.addSingleLineTextLeftCentered(exerciseDate, (int) (pageHeight - 171), regularFont, 12,
                 Color.BLACK);
-        textManager.addSingleLineTextRightCentered("", (int) (pageHeight - 166), regularFont, 12, Color.BLACK);
-        textManager.addSingleLineTextLeftCentered(participantName, (int) (pageHeight - 181), regularFont, 12,
+        textManager.addSingleLineTextRightCentered("", (int) (pageHeight - 171), regularFont, 12, Color.BLACK);
+        textManager.addSingleLineTextLeftCentered(participantName, (int) (pageHeight - 191), regularFont, 12,
                 Color.BLACK);
-        textManager.addSingleLineTextRightCentered("", (int) (pageHeight - 181), regularFont, 12,
+        textManager.addSingleLineTextRightCentered("", (int) (pageHeight - 191), regularFont, 12,
                 Color.BLACK);
-        textManager.addSingleLineTextLeftCentered(participantScore, (int) (pageHeight - 196),
+        textManager.addSingleLineTextLeftCentered(participantScore, (int) (pageHeight - 211),
                 regularFont, 12, Color.BLACK);
-        textManager.addSingleLineTextRightCentered("", (int) (pageHeight - 196), regularFont, 12,
+        textManager.addSingleLineTextRightCentered("", (int) (pageHeight - 211), regularFont, 12,
                 Color.BLACK);
 
         textManager.addSingleLineTextLeftAligned(generalInfo, (int) (pageHeight -
-                221), italicFont, 14, Color.BLACK);
+                241), italicFont, 14, Color.BLACK);
 
         int[] cellWidthTab1 = { 162, 100, 162, 100 };
-        tableManager.setTable(cellWidthTab1, 20, 35, (int) (pageHeight - 251));
+        tableManager.setTable(cellWidthTab1, 20, 35, (int) (pageHeight - 271));
         tableManager.setTableFont(regularFont, 10, Color.BLACK);
 
         tableManager.addCell(exerciseTime, Color.LIGHT_GRAY);
@@ -128,10 +129,10 @@ public class PdfGeneratorBobber {
         tableManager.addCell("", Color.WHITE);
 
         textManager.addSingleLineTextLeftAligned(externalFactors, (int) (pageHeight -
-                381), italicFont, 14, Color.BLACK);
+                401), italicFont, 14, Color.BLACK);
 
         int[] cellWidthTab2 = { 162, 100, 162, 100 };
-        tableManager.setTable(cellWidthTab2, 20, 35, (int) (pageHeight - 411));
+        tableManager.setTable(cellWidthTab2, 20, 35, (int) (pageHeight - 431));
         tableManager.setTableFont(regularFont, 10, Color.BLACK);
 
         tableManager.addCell(airTemperature, Color.LIGHT_GRAY);
@@ -146,6 +147,10 @@ public class PdfGeneratorBobber {
         pictureManager.addPictureCentered(targetImage, pageHeight - 781, (float) 0.5);
 
         pictureManager.addPictureCentered(devLogo, pageHeight - 821, (float) 0.04);
+
+        textManager.addSingleLineTextRightAligned(
+                "Отметка времени: " + d_Format.format(new Date()) + ", " + t_Format.format(new Date()),
+                (int) pageHeight - 821, regularFont, 8, Color.BLACK);
 
         contentStream.close();
         document.save("/Users/michael/Downloads/bobber_res.pdf");

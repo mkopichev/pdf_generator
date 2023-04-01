@@ -61,6 +61,13 @@ public class PdfElementManager {
             addSingleLineText(text, xPosLeftAligned, yPos, font, fontSize, color);
         }
 
+        void addSingleLineTextRightAligned(String text, int yPos, PDFont font, float fontSize, Color color)
+                throws IOException {
+
+            int xPosRightAligned = (int) (document.getPage(0).getTrimBox().getWidth() - TextManager.getTextWidth(text, font, fontSize) - 35);
+            addSingleLineText(text, xPosRightAligned, yPos, font, fontSize, color);
+        }
+
         void addMultipleLineText(String[] textArray, float leading, int xPos, int yPos, PDFont font, float fontSize,
                 Color color) throws IOException {
 
