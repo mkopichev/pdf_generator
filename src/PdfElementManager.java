@@ -13,10 +13,10 @@ public class PdfElementManager {
         PDDocument document;
         PDPageContentStream contentStream;
 
-        public TextManager(PDDocument document, PDPageContentStream contentStrem) {
+        public TextManager(PDDocument document, PDPageContentStream contentStream) {
 
             this.document = document;
-            this.contentStream = contentStrem;
+            this.contentStream = contentStream;
         }
 
         void addSingleLineText(String text, int xPos, int yPos, PDFont font, float fontSize, Color color)
@@ -64,7 +64,8 @@ public class PdfElementManager {
         void addSingleLineTextRightAligned(String text, int yPos, PDFont font, float fontSize, Color color)
                 throws IOException {
 
-            int xPosRightAligned = (int) (document.getPage(0).getTrimBox().getWidth() - TextManager.getTextWidth(text, font, fontSize) - 35);
+            int xPosRightAligned = (int) (document.getPage(0).getTrimBox().getWidth()
+                    - TextManager.getTextWidth(text, font, fontSize) - 35);
             addSingleLineText(text, xPosRightAligned, yPos, font, fontSize, color);
         }
 
