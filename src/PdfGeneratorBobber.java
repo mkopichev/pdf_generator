@@ -153,7 +153,7 @@ public class PdfGeneratorBobber {
                 (int) pageHeight - 821, regularFont, 8, Color.BLACK);
 
         contentStream.close();
-        document.save("/Users/michael/Downloads/bobber_res.pdf");
+        document.save("F:/bobber_res.pdf");
         document.close();
         System.out.println("PDF done");
     }
